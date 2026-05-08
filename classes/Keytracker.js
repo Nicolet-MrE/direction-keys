@@ -1,5 +1,3 @@
-'use strict';
-
 export class Keytracker {
     constructor(){
         this.states = {
@@ -11,13 +9,14 @@ export class Keytracker {
             'left' : false,
             'down' : false,
             'right' : false,
-            'space' : false,
+            'spaceBar' : false,
             'e' : false,
             'q' : false
-        }
+        };
+        this.running = false;
     }
     checkKeys(){
-        document.addEventListener('keydown', (e)=>{
+        window.addEventListener('keydown', (e)=>{
             if(e.key === 'w'){
                 this.states.w = true;
             }
@@ -42,8 +41,8 @@ export class Keytracker {
             if(e.key === 'ArrowRight'){
                 this.states.right = true;
             }
-            if(e.key === 'Space'){
-                this.states.space = true;
+            if(e.keyCode === 32){
+                this.states.spaceBar = true;
             }
             if(e.key === 'e'){
                 this.states.e = true;
@@ -53,7 +52,7 @@ export class Keytracker {
             }
         });
 
-        document.addEventListener('keyup', (e)=>{
+        window.addEventListener('keyup', (e)=>{
             if(e.key === 'w'){
                 this.states.w = false;
             }
@@ -78,8 +77,8 @@ export class Keytracker {
             if(e.key === 'ArrowRight'){
                 this.states.right = false;
             }
-            if(e.key === 'Space'){
-                this.states.space = false;
+            if(e.keyCode === 32){
+                this.states.spaceBar = false;
             }
             if(e.key === 'e'){
                 this.states.e = false;
